@@ -7,12 +7,8 @@ using namespace std;
 
 int main(int argc, char *argv[]){
   KenoBet Jogo = formatar(argv);
-	Jogo.get_wage(Jogo.get_hits());
-	Jogo.get_spots();
-  /*for(int i=0; i<argc; i++)
-    cout<<"Argumento["<<i<<"]: "<<argv[i]<<endl;*/
-  //while(a!=NR){
-	
-  
+	Jogo.randoms_spots();
+	Jogo.get_hits();
+	Jogo.Interface();
   return 0;
 }

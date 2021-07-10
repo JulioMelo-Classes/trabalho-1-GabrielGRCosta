@@ -3,4 +3,5 @@
 #define FORMAT_H
 
 KenoBet formatar(char *argv[]);
+void Interface(void);
 #endif

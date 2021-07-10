@@ -1,6 +1,8 @@
 #include "../include/Kenobet.h"
 #include <random>
 #include <iostream>
+#include <sstream>
+#include <string>
 
  KenoBet::KenoBet( ) : m_wage(0)
   { };
@@ -19,9 +21,11 @@
 		m_rounds=a;
 	}
 
-  int KenoBet::money(void){
-    return m_wage;
-  }
+	int KenoBet::rounds(void){
+		int a;
+		a=m_rounds;
+		return a;
+	}
 
 	bool KenoBet::set_wage( cash_type wage_ ){ 
 		if(wage_>0){
@@ -31,560 +35,176 @@
 		else{
 			return false;
 		}
-	}	
-		
-	void KenoBet::reset( void ){
-		set_of_numbers_type new_vector;
-			m_spots = new_vector;
 	}
 
-	cash_type KenoBet::get_wage(const set_of_numbers_type & vetor) const{
-		cash_type x;
-		x=m_wage;
-		int spot,hit;
-		spot=m_spots.size();
-		hit=vetor.size();
-		switch(spot){
-      case 1:
-        if(hit == 0){
-          x = 0;
-        }
-      
-        if(hit == 1){
-          x = 3 * x;
-        }
-
-      case 2:
-        if(hit == 0){
-          x = 0;
-        }
-
-      if(hit == 2){
-        x = 9 * x;
-      }
-
-      case 3:
-        if(hit == 0){
-          x = 0;
-        }
-        
-        if(hit == 2){
-          x = 2 * x;
-        }
-
-        if(hit == 3){
-          x = 16 * x;
-        }
-      
-      case 4:
-        if(hit == 0){
-          x = 0;
-        }
-
-        if(hit == 1){
-          x = x / 2;
-        }
-
-        if(hit == 2){
-          x = 2 * x;
-        }
-
-        if(hit == 3){
-          x = 6 * x;
-        }
-
-        if(hit == 4){
-          x = 12 * x;
-        }
-
-      case 5:
-        if(hit == 0){
-          x = 0;
-        }
-
-        if(hit == 1){
-          x = x / 2;
-        }
-
-        if(hit == 3){
-          x = 3 * x;
-        }
-
-        if(hit == 4){
-          x = 15 * x;
-        }
-
-        if(hit == 5){
-          x = 50 * x;
-        }
-
-      case 6:
-        if(hit == 0){
-          x = 0;
-        }
-
-        if(hit == 1){
-          x = x / 2;
-        }
-
-        if(hit == 3){
-          x = 2 * x;
-        }
-
-        if(hit == 4){
-          x = 3 * x;
-        }
-
-        if(hit == 5){
-          x = 30 * x;
-        }
-
-        if(hit == 6){
-          x = 75 * x;
-        }
-
-      case 7:
-        if(hit == 0){
-          x = 0;
-        }
-
-        if(hit == 1){
-          x = x / 2;
-        }
-
-        if(hit == 2){
-          x =  x / 2;
-        }
-
-        if(hit == 4){
-          x = 6 * x;
-        }
-
-        if(hit == 5){
-          x = 12 * x;
-        }
-
-        if(hit == 6){
-          x = 36 * x;
-        }
-
-        if(hit == 7){
-          x = 100 * x;
-        }
-
-      case 8:
-        if(hit == 0){
-          x = 0;
-        }
-
-        if(hit == 1){
-          x = x / 2;
-        }
-
-        if(hit == 2){
-          x =  x / 2;
-        }
-
-        if(hit == 4){
-          x = 3 * x;
-        }
-
-        if(hit == 5){
-          x = 6 * x;
-        }
-
-        if(hit == 6){
-          x = 19 * x;
-        }
-
-        if(hit == 7){
-          x = 90 * x;
-        }
-
-        if(hit == 8){
-          x = 720 * x;
-        }
-      
-      case 9:
-        if(hit == 0){
-          x = 0;
-        }
-
-        if(hit == 1){
-          x = x / 2;
-        }
-
-        if(hit == 2){
-          x =  x / 2;
-        }
-
-        if(hit == 4){
-          x = 2 * x;
-        }
-
-        if(hit == 5){
-          x = 4 * x;
-        }
-
-        if(hit == 6){
-          x = 8 * x;
-        }
-
-        if(hit == 7){
-          x = 20 * x;
-        }
-
-        if(hit == 8){
-          x = 80 * x;
-        }
-
-        if(hit == 9){
-          x = 1200 * x;
-        }
-
-      case 10:
-        if(hit == 0){
-          x = 0;
-        }
-
-        if(hit == 1){
-          x = 0;
-        }
-
-        if(hit == 2){
-          x =  x / 2;
-        }
-
-        if(hit == 4){
-          x = 2 * x;
-        }
-
-        if(hit == 5){
-          x = 3 * x;
-        }
-
-        if(hit == 6){
-          x = 5 * x;
-        }
-
-        if(hit == 7){
-          x = 10 * x;
-        }
-
-        if(hit == 8){
-          x = 30 * x;
-        }
-
-        if(hit == 9){
-          x = 600 * x;
-        }
-
-        if(hit == 10){
-          x = 1800 * x;
-        }
-
-      case 11:
-        if(hit == 0){
-          x = 0;
-        }
-
-        if(hit == 1){
-          x = 0;
-        }
-
-        if(hit == 2){
-          x =  x / 2;
-        }
-
-        if(hit == 5){
-          x = 2 * x;
-        }
-
-        if(hit == 6){
-          x = 6 * x;
-        }
-
-        if(hit == 7){
-          x = 15 * x;
-        }
-
-        if(hit == 8){
-          x = 25 * x;
-        }
-
-        if(hit == 9){
-          x = 180 * x;
-        }
-
-        if(hit == 10){
-          x = 1000 * x;
-        }
-
-        if(hit == 11){
-          x = 3000 * x;
-        }
-      
-      case 12:
-        if(hit == 0){
-          x = 0;
-        }
-
-        if(hit == 1){
-          x = 0;
-        }
-
-        if(hit == 2){
-          x = 0;
-        }
-
-        if(hit == 3){
-          x =  x / 2;
-        }
-
-        if(hit == 5){
-          x = 2 * x;
-        }
-
-        if(hit == 6){
-          x = 4 * x;
-        }
-
-        if(hit == 7){
-          x = 24 * x;
-        }
-
-        if(hit == 8){
-          x = 72 * x;
-        }
-
-        if(hit == 9){
-          x = 250 * x;
-        }
-
-        if(hit == 10){
-          x = 500 * x;
-        }
-
-        if(hit == 11){
-          x = 2000 * x;
-        }
-
-        if(hit == 12){
-          x = 4000 * x;
-        }
-
-      case 13:
-        if(hit == 0){
-          x = 0;
-        }
-
-        if(hit == 1){
-          x = 0;
-        }
-
-        if(hit == 2){
-          x = 0;
-        }
-
-        if(hit == 3){
-          x =  x / 2;
-        }
-
-        if(hit == 4){
-          x = x / 2;
-        }
-
-        if(hit == 5){
-          x = 3 * x;
-        }
-
-        if(hit == 6){
-          x = 4 * x;
-        }
-
-        if(hit == 7){
-          x = 5 * x;
-        }
-
-        if(hit == 8){
-          x = 20 * x;
-        }
-
-        if(hit == 9){
-          x = 80 * x;
-        }
-
-        if(hit == 10){
-          x = 240 * x;
-        }
-
-        if(hit == 11){
-          x = 500 * x;
-        }
-
-        if(hit == 12){
-          x = 3000 * x;
-        }
-
-        if(hit == 13){
-          x = 6000 * x;
-        }
-
-      case 14:
-        if(hit == 0){
-          x = 0;
-        }
-
-        if(hit == 1){
-          x = 0;
-        }
-
-        if(hit == 2){
-          x = 0;
-        }
-
-        if(hit == 3){
-          x =  x / 2;
-        }
-
-        if(hit == 4){
-          x = x / 2;
-        }
-
-        if(hit == 5){
-          x = 2 * x;
-        }
-
-        if(hit == 6){
-          x = 3 * x;
-        }
-
-        if(hit == 7){
-          x = 5 * x;
-        }
-
-        if(hit == 8){
-          x = 12 * x;
-        }
-
-        if(hit == 9){
-          x = 50 * x;
-        }
-
-        if(hit == 10){
-          x = 150 * x;
-        }
-
-        if(hit == 11){
-          x = 500 * x;
-        }
-
-        if(hit == 12){
-          x = 1000 * x;
-        }
-
-        if(hit == 13){
-          x = 2000 * x;
-        }
-
-        if(hit == 14){
-          x = 7500 * x;
-        }
-      
-      case 15:
-        if(hit == 0){
-          x = 0;
-        }
-
-        if(hit == 1){
-          x = 0;
-        }
-
-        if(hit == 2){
-          x = 0;
-        }
-
-        if(hit == 3){
-          x =  x / 2;
-        }
-
-        if(hit == 4){
-          x = x / 2;
-        }
-
-        if(hit == 6){
-          x = 2 * x;
-        }
-
-        if(hit == 7){
-          x = 5 * x;
-        }
-
-        if(hit == 8){
-          x = 15 * x;
-        }
-
-        if(hit == 9){
-          x = 50 * x;
-        }
-
-        if(hit == 10){
-          x = 150 * x;
-        }
-
-        if(hit == 11){
-          x = 300 * x;
-        }
-
-        if(hit == 12){
-          x = 600 * x;
-        }
-
-        if(hit == 13){
-          x = 1200 * x;
-        }
-
-        if(hit == 14){
-          x = 2500 * x;
-        }
-
-        if(hit == 15){
-          x = 10000 * x;
-        }
-      
-		}
-		std::cout<<"jogo do bixo:"<<x<<std::endl;
+	/*void estranho(std::string caracter){
+		std::stringstream p;
+		getline(caracter,p);
+		
+	}*/
+
+
+	void KenoBet::arquivo1(char *a){
+		using namespace std;
+		name1=a;
+	}
+
+	void KenoBet::arquivo2(char *a){
+		using namespace std;
+		name2=a;
+	}
+	
+	void KenoBet::reset( void ){
+		set_of_numbers_type new_vector1;
+		set_of_numbers_type new_vector2;
+		randomico = new_vector1;
+		hits = new_vector2;
+	}
+
+	cash_type KenoBet::get_wage( void){
+		cash_type x,l;
+		x=m_wage/m_rounds;
+		l = aposta[(m_spots.size())-1][hits.size()];
+		x=x*l;
+		moneyf+=x;
 		return x;
 	}
 			
 	std::size_t KenoBet::size( void )const{
 		return m_spots.size();
-	} 
+	}
 
 	set_of_numbers_type
-	KenoBet::get_hits( void ) const{
-		set_of_numbers_type apostas;
-		set_of_numbers_type hits;
-    std::random_device rd;
+	KenoBet::randoms_spots( void ) {
+		
+    int x = 0;
+    int vdc = 0;
+		number_type num;
+		std::random_device rd;
     std::mt19937 mt(rd());
-     std::uniform_int_distribution<unsigned> distrib(1, 80);
-    for( unsigned long j = 0; j < 20; ++j ){ 
-			apostas.push_back(distrib(mt));
-		}
-		for(unsigned short int i=0; i<m_spots.size(); i++){
+    std::uniform_int_distribution<unsigned> distrib(1, 80); 
+		for(int i = 0; i < 100; i++){
+      vdc = 0;
+      num=distrib(mt);
+			for(number_type k = 0; k < randomico.size(); k++){
+        if(randomico[k] == num){
+          vdc = 1;
+          break;
+        }
+      }
+      if(vdc == 0){
+        randomico.push_back(num);
+        x++;
+      }
+      if(x == 20){
+        return randomico;
+      }
+
+    }
+    return randomico;
+	}	
+
+	set_of_numbers_type
+	KenoBet::get_hits( void ) {
+		for(number_type i=0; i<m_spots.size(); i++){
 			for(int b=0; b<20; b++ ){	
-				if(m_spots[i]== apostas[b]){
+				if(m_spots[i]== randomico[b]){
 					hits.push_back(m_spots[i]);
 				}
 			}	
 		}
+		/*for(number_type u=0; u<hits.size(); u++){
+			std::cout<<hits[u];
+			std::cout<<" ";
+		}*/
 		return hits;	
 	}
 
-	set_of_numbers_type KenoBet::get_spots( void ) const{
-		for(int i=0; i<15 ; i++){
-			std::cout<<m_spots[i];
-			std::cout<<",";
+		void KenoBet::Interface(void){
+		using namespace std;
+		cout<<">>>Lendo arquivo de apostas ["<<name1<<name2;
+		cout<<"]";
+		cout<<",por favor aguarde..."<<endl;
+		cout<<"--------------------------------"<<endl;
+		cout<<">>>Aposta lida com sucesso!"<<endl;
+		cout<<"Você apostará um total de $"<<m_wage;
+		cout<<" créditos."<<endl;
+		cout<<"Jogará um total de "<<m_rounds;
+		cout<<" rodadas, apostando $"<<m_wage/m_rounds;
+		cout<<" créditos por rodada"<<endl;
+		cout<<"\n"<<endl;
+		cout<<"Sua aposta tem "<<m_spots.size();
+		cout<<" números eles são:";
+		cout<<"[";
+    int n = 1;
+		for(unsigned short int i=0; i<m_spots.size(); i++){
+			cout<<m_spots[i];
+			cout<<" ";
 		}
+		cout<<"]"<<endl;
+		cout<<"        ---------+----------"<<endl;
+		cout<<"		Hits   |  Retorno "<<endl;
+		for(number_type b=0; b<m_spots.size()+1; b++){
+			cout<<"        ";
+			cout<<b;
+			cout<<"      |  ";
+			cout<<aposta[m_spots.size()-1][b];
+			cout<<"\n";
+		}
+		cout<<"		-----------------------------------------"<<endl;
+		for(int c=1; c<m_rounds+1; c++){
+			if(c!=1){
+				randoms_spots();
+				get_hits();
+			}
+			cout<<"		Esta é a rodada #"<<c;
+			cout<<" de "<<m_rounds;
+			cout<<" sua aposta é "<<m_wage/m_rounds;
+			cout<<". Boa sorte!"<<endl;
+			cout<<"		Os números sorteados são: [";
+			for(number_type m=0; m<randomico.size(); m++){
+				cout<<randomico[m];
+				cout<<" ";
+			}
+			cout<<"]"<<endl;;
+			cout<<"\n";
+			cout<<"\n";
+			cout<<"		Você acertou os números [";
+			//cout<<c;
+			//cout<<" ";
+			for(number_type g=0; g<hits.size(); g++){
+				cout<<hits[g];
+				cout<<" ";
+			}
+			cout<<"], um total de "<<hits.size();
+			cout<<" hit(s) de "<<m_spots.size()<<endl;
+			cout<<"		Sua taxa de retorno é "<<aposta[(m_spots.size())-1][hits.size()];
+			cout<<", assim você sai com: $"<<get_wage()<<endl;
+			cout<<"		Você possui um total de: $"<< m_wage + moneyf - n*(m_wage / m_rounds);
+      n++;
+			cout<<" créditos."<<endl;
+			cout<<"		----------------------------------------"<<endl;
+			reset();
+		}
+		cout<<">>> Fim das rodadas!"<<endl;
+		cout<<"-------------------------------------------------"<<endl;
+		cout<<"\n";
+		cout<<"\n";
+		cout<<"======= Súmario ======="<<endl;
+		cout<<">>>Você gastou um total de $"<<m_wage<<endl;
+		cout<<"créditos"<<endl;
+		if(m_wage<moneyf){
+			cout<<">>>Hooray! você ganhou $"<<moneyf-m_wage;
+			cout<<" créditos!"<<endl;
+		}
+		else{
+			cout<<">>>uma pena! você perdeu $"<<moneyf-m_wage;
+			cout<<" créditos!"<<endl;
+		}
+		cout<<">>>Você está saindo do jogo com um total de $"<<moneyf;
+			cout<<" créditos!"<<endl;
+	}
+
+	set_of_numbers_type KenoBet::get_spots( void )const{
 		return m_spots;
   }
