@@ -11,11 +11,5 @@ $(OBJ_FILES): bin/%.o: src/%.cpp
 	$(COMPILER) $(FLAGS) -c  $< -o $@
 
 clean:
-<<<<<<< HEAD
-	rm -f bin/*.o
-	rm -f $(PROGRAM_NAME)
-	
-=======
-	rm -rf *.o
+	rm -rf $(OBJ_FILES)
 	rm $(PROGRAM_NAME)
->>>>>>> 8185f67ed0fb741f843191c4317d421f576246b7
